@@ -1,20 +1,16 @@
 package org.procedure.scheduling.web.form;
 
-import java.time.LocalDate;
-
-import javax.validation.constraints.NotNull;
-
-import org.procedure.scheduling.domain.Sex;
+import org.procedure.scheduling.domain.Doctor;
+import org.procedure.scheduling.domain.Room;
 
 public class PatientForm {
 
 	public PatientForm() {
-		
+
 	}
-	
-	public PatientForm(String name, Sex patientSex, LocalDate dob)
-	{
-		this.name=name;
+
+	public PatientForm(String name, String patientSex, String dob) {
+		this.name = name;
 		this.patientSex = patientSex;
 		this.dob = dob;
 	}
@@ -22,12 +18,15 @@ public class PatientForm {
 
 	private Integer id;
 	
-	@NotNull
 	private String name;
 	
-	private Sex patientSex;
+	private String patientSex;
 	
-	private LocalDate dob;
+	private String dob;
+	
+	private Integer doctorId;
+	
+	private Integer roomId;
 
 	public Integer getId() {
 		return id;
@@ -45,20 +44,35 @@ public class PatientForm {
 		this.name = name;
 	}
 
-	public Sex getPatientSex() {
+	public String getPatientSex() {
 		return patientSex;
 	}
 
-	public void setPatientSex(Sex patientSex) {
+	public void setPatientSex(String patientSex) {
 		this.patientSex = patientSex;
 	}
 
-	public LocalDate getDob() {
+	public String getDob() {
 		return dob;
 	}
 
-	public void setDob(LocalDate dob) {
+	public void setDob(String dob) {
 		this.dob = dob;
 	}
 
+	public Integer getDoctorId() {
+		return doctorId;
+	}
+
+	public void setDoctorId(Integer doctorId) {
+		this.doctorId = doctorId;
+	}
+
+	public Integer getRoomId() {
+		return roomId;
+	}
+
+	public void setRoomId(Integer roomId) {
+		this.roomId = roomId;
+	}
 }

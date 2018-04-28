@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout}">
+<head>
+  
+</head>
+
+<body>
+	<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+	<div class="sidebar-sticky" layout:fragment="sidebar">
+		<ul class="nav flex-column">
+			<li class="nav-item"><a class="nav-link active" href="#"> <span
+					data-feather="home"></span> Add article <span class="sr-only">(current)</span>
+			</a></li>
+			
+			<li class="nav-item"><a class="nav-link active" href="/article_list"> Show article list
+			</a></li>
+			
+		</ul>
+	</div>
+	<div layout:fragment="content">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <h1 class="h2">Add patient</h1>
+        </div>
+		<div class="row">
+        <div class="col-md-8 order-md-1">
+          <form action="#" th:action="@{/patient/add/action}" th:object="${patient}" method="post">
+            <div class="mb-3">
+              <label for="name">Name <span class="text-muted"></span></label>
+              <input th:field="*{name}"  type="text" class="form-control" id="name" placeholder="Name" required>
+              <div class="invalid-feedback">
+                Please enter patient name.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="address">Sex</label>
+              	<select th:field="*{patientSex}" class="form-control">
+  					<option th:each="sex : ${patientSex}" 
+          				th:value="${sex}" 
+          				th:text="${sex}"></option>
+				</select>
+              <div class="invalid-feedback">
+                Please select patient sex.
+              </div>
+            </div>
+            
+            <div class="mb-3">
+    				<label for="dob">Date of birth <span class="text-muted"></span></label>
+              	<input th:field="*{dob}"  type="text" class="form-control" id="dob" placeholder="YYYY-MM-DD" required>
+              	<div class="invalid-feedback">
+                		Please enter patient date of brith.
+              	</div>
+  			</div>
+  			
+  			<div class="mb-3">
+    				<label for="doctor">Assign doctor in charge</label>
+    				<select th:field="*{doctorId}" class="form-control">
+  					<option th:each="doctor : ${doctors}" 
+          				th:value="${doctor.id}" 
+          				th:text="${doctor.name}"></option>
+				</select>
+    				<div class="invalid-feedback">
+                		Please enter article text.
+            		</div>
+  			</div>
+  			<div class="mb-3">
+    				<label for="doctor">Assign room</label>
+    				<select th:field="*{roomId}" class="form-control">
+  					<option th:each="room : ${rooms}" 
+          				th:value="${room.id}" 
+          				th:text="${'No.'+room.id+'('+room.name+')'}"></option>
+				</select>
+    				<div class="invalid-feedback">
+                		Please enter article text.
+            		</div>
+  			</div> 
+           	<button  class="btn btn-primary btn-lg btn-block" type="submit">Add patient</button>
+          </form>
+        </div>
+      </div>
+		<script>
+			$(function() {
+				$("#dob").datepicker({
+					dateFormat : 'yy-mm-dd',
+					changeMonth: true,
+				    changeYear: true
+				});
+		
+			});
+		</script>
+  </script>
+	</div>
+</body>
+</html>

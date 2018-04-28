@@ -18,11 +18,39 @@
 		</ul>
 	</div>
 	<div layout:fragment="content">
-		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
             <h1 class="h2">Patient(s)</h1>
         </div>
 		<div class="row">
-         patient list
+        <div class="col-md-12 order-md-1">
+          <table class="table">
+          	<tr>
+          		<th>ID</th>
+          		<th>Name</th>
+          		<th>Sex</th>
+          		<th>Date of birth</th>
+          		<th>Room</th>
+          		<th>Doctor in charge</th>
+          	</tr>
+          	<tr th:each="patient : ${patients}">
+          		<td th:text="${patient.id}">
+          		</td>
+          		<td th:text="${patient.name}">
+          		</td>
+          		<td th:text="${patient.patientSex}">
+          		</td>
+          		<td th:text="${patient.dob}">
+          		</td>
+          		<td th:text="${'No.'+patient.room.id+'('+patient.room.name+')'}">
+          		</td>
+          		<td th:text="${patient.doctor.name}">
+          		</td>
+          	</tr>
+          </table>
+            
+           <a  class="btn btn-primary btn-lg btn-block"  href="/patient/add">Add patient</a>
+          
+        </div>
       </div>
 
 	</div>

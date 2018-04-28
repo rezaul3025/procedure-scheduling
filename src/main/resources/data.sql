@@ -1,5 +1,5 @@
 INSERT INTO room(id, name) VALUES(1, 'Rose');
-INSERT INTO room(id, name) VALUES(2, 'Camelie');
+INSERT INTO room(id, name) VALUES(2, 'Camellia');
 
 INSERT INTO doctor(id, name) VALUES(1, 'Dr. Prof. Rauf Tim');
 INSERT INTO doctor(id, name) VALUES(2, 'Dr. Prof. Hanse Braown');
