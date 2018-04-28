@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout}">
+<head>
+  
+</head>
+
+<body>
+	<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+	<div class="sidebar-sticky" layout:fragment="sidebar">
+		<ul class="nav flex-column">
+			<li class="nav-item"><a class="nav-link active" href="#"> <span
+					data-feather="home"></span> Add article <span class="sr-only">(current)</span>
+			</a></li>
+			
+			<li class="nav-item"><a class="nav-link active" href="/article_list"> Show article list
+			</a></li>
+			
+		</ul>
+	</div>
+	<div layout:fragment="content">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <h1 class="h2">Create study for <small th:text="${patient.name+'(ID:'+patient.id+')'}"></small></h1>
+        </div>
+		<div class="row">
+        <div class="col-md-8 order-md-1">
+          <form action="#" th:action="@{/study/add/action/}+${patient.id}" th:object="${study}" method="post">
+            <div class="mb-3">
+              <label for="description">Description <span class="text-muted"></span></label>
+              <textarea  th:field="*{description}" class="form-control" id="description" rows="3"></textarea>
+              <div class="invalid-feedback">
+                Please enter study description.
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="address">Status</label>
+              	<select th:field="*{status}" class="form-control">
+  					<option th:each="status : ${studyStatus}" 
+          				th:value="${status}" 
+          				th:text="${status}"></option>
+				</select>
+              <div class="invalid-feedback">
+                Please select study status.
+              </div>
+            </div>
+            
+            <div class="mb-3">
+    				<label for="plannedStartTime">Planned start time <span class="text-muted"></span></label>
+              	<input th:field="*{plannedStartTime}"  type="datetime-local" class="form-control" id="plannedStartTime" placeholder="YYYY-MM-DD HH:mm" required>
+              	<div class="invalid-feedback">
+                		Please enter planned start time.
+              	</div>
+  			</div>
+  			
+  			<div class="mb-3">
+    				<label for="estimatedEndTime">Estimated end time <span class="text-muted"></span></label>
+              	<input th:field="*{estimatedEndTime}"  type="text" class="form-control" id="estimatedEndTime" placeholder="YYYY-MM-DD HH:mm" required>
+              	<div class="invalid-feedback">
+                		Please enter estimated end time.
+              	</div>
+  			</div>
+  			
+           	<button  class="btn btn-primary btn-lg btn-block" type="submit">Create study</button>
+          </form>
+        </div>
+      </div>
+		<script>
+			
+			/* $(function() {
+				$("#plannedStartTime").datepicker({
+					dateFormat : 'yy-mm-dd hh:mm'
+				});
+
+				$("#estimatedEndTime").datepicker({
+					dateFormat : 'yy-mm-dd hh:mm'
+				});
+
+			}); */
+		</script>
+  </script>
+	</div>
+</body>
+</html>

@@ -1,34 +1,32 @@
 package org.procedure.scheduling.web.form;
 
-import java.time.LocalDateTime;
-
 import javax.validation.constraints.NotNull;
 
 import org.procedure.scheduling.domain.Patient;
-import org.procedure.scheduling.domain.StudyStatus;
 
 public class StudyForm {
 
 	private Integer id;
-	
+
 	@NotNull
 	private Patient patient;
-	
+
 	@NotNull
 	private String description;
-	
+
 	@NotNull
-	private StudyStatus status;
-	
-	private LocalDateTime plannedStartTime;
-	
-	private LocalDateTime estimatedEndTime;
-	
+	private String status;
+
+	private String plannedStartTime;
+
+	private String estimatedEndTime;
+
 	public StudyForm() {
-		
+
 	}
-	
-	public StudyForm(Patient patient, String description, StudyStatus status, LocalDateTime plannedStartTime, LocalDateTime estimatedEndTime) {
+
+	public StudyForm(Patient patient, String description, String status, String plannedStartTime,
+			String estimatedEndTime) {
 		this.patient = patient;
 		this.description = description;
 		this.status = status;
@@ -60,27 +58,27 @@ public class StudyForm {
 		this.description = description;
 	}
 
-	public StudyStatus getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(StudyStatus status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
-	public LocalDateTime getPlannedStartTime() {
+	public String getPlannedStartTime() {
 		return plannedStartTime;
 	}
 
-	public void setPlannedStartTime(LocalDateTime plannedStartTime) {
+	public void setPlannedStartTime(String plannedStartTime) {
 		this.plannedStartTime = plannedStartTime;
 	}
 
-	public LocalDateTime getEstimatedEndTime() {
+	public String getEstimatedEndTime() {
 		return estimatedEndTime;
 	}
 
-	public void setEstimatedEndTime(LocalDateTime estimatedEndTime) {
+	public void setEstimatedEndTime(String estimatedEndTime) {
 		this.estimatedEndTime = estimatedEndTime;
 	}
 }

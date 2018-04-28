@@ -31,6 +31,7 @@
           		<th>Date of birth</th>
           		<th>Room</th>
           		<th>Doctor in charge</th>
+          		<th>Study</th>
           	</tr>
           	<tr th:each="patient : ${patients}">
           		<td th:text="${patient.id}">
@@ -44,6 +45,9 @@
           		<td th:text="${'No.'+patient.room.id+'('+patient.room.name+')'}">
           		</td>
           		<td th:text="${patient.doctor.name}">
+          		</td>
+          		<td> 
+           			<a  class="btn btn-primary  btn-block"  th:href="@{/study/add/}+${patient.id}">Add</a>
           		</td>
           	</tr>
           </table>
