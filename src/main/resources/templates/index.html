@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout}">
+<head>
+</head>
+
+<body>
+	<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+	<div class="sidebar-sticky" layout:fragment="sidebar">
+		<ul class="nav flex-column">
+			<li class="nav-item"><a class="nav-link active" href="#"> <span
+					data-feather="home"></span> Add article <span class="sr-only">(current)</span>
+			</a></li>
+			
+			<li class="nav-item"><a class="nav-link active" href="/patient"> All patients
+			</a></li>
+			
+		</ul>
+	</div>
+	<div layout:fragment="content">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Patient(s)</h1>
+        </div>
+		<div class="row">
+        <div class="col-md-4 order-md-2 mb-4">
+          
+        </div>
+        <div class="col-md-8 order-md-1">
+          
+          <form class="needs-validation" name="articleForm" ng-submit="addArticle(article, articleForm)">
+            <div class="mb-3">
+              <label for="email">Header <span class="text-muted"></span></label>
+              <input type="text" ng-model="article.header" class="form-control" id="header" placeholder="">
+              <div class="invalid-feedback">
+                Please enter a article header.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label for="address">Author</label>
+              <input type="text" ng-model="article.author" class="form-control" id="author" placeholder="" required>
+              <div class="invalid-feedback">
+                Please enter article author.
+              </div>
+            </div>
+            
+            <div class="mb-3">
+    				<label for="description">Description</label>
+    				<textarea ng-model="article.description" class="form-control" id="description" rows="3"></textarea>
+    				<div class="invalid-feedback">
+                		Please enter article description.
+            		</div>
+  			</div>
+  			
+  			<div class="mb-3">
+    				<label for="text">Article text</label>
+    				<textarea ng-model="article.text" class="form-control" id="text" rows="3"></textarea>
+    				<div class="invalid-feedback">
+                		Please enter article text.
+            		</div>
+  			</div>
+
+            <div class="mb-3">
+              <label for="keywords">Key words  <span class="text-muted"></span></label>
+              <input type="text" ng-model="article.keywords" class="form-control" id="keywords" placeholder="">
+            </div>
+            <button  class="btn btn-primary btn-lg btn-block" type="submit">Create article</button>
+          </form>
+        </div>
+      </div>
+
+	</div>
+</body>
+</html>
