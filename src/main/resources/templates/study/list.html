@@ -25,53 +25,42 @@
 	</div>
 	<div layout:fragment="content">
 		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
-            <h1 class="h2">Patient(s)</h1>
+            <h1 class="h2">Studies</h1>
         </div>
 		<div class="row">
         <div class="col-md-12 order-md-1">
           <table class="table">
           	<tr>
           		<th>ID</th>
-          		<th>Name</th>
-          		<th>Sex</th>
-          		<th>Date of birth</th>
-          		<th>Room</th>
-          		<th>Doctor in charge</th>
-          		<th>Number of Study</th>
-          		<th>Study</th>
+          		<th>Patient</th>
+          		<th>Description</th>
+          		<th>Status</th>
+          		<th>Planned start time</th>
+          		<th>Estimated end time</th>
           		<th>Update</th>
           		<th>Delete</th>
           	</tr>
-          	<tr th:each="patient : ${patients}">
-          		<td th:text="${patient.id}">
+          	<tr th:each="study : ${studies}">
+          		<td th:text="${study.id}">
           		</td>
-          		<td th:text="${patient.name}">
+          		<td th:text="${study.patient.name}">
           		</td>
-          		<td th:text="${patient.patientSex}">
+          		<td th:text="${study.description}">
           		</td>
-          		<td th:text="${patient.dob}">
+          		<td th:text="${study.status}">
           		</td>
-          		<td th:text="${'No.'+patient.room.id+'('+patient.room.name+')'}">
+          		<td th:text="${study.plannedStartTime}">
           		</td>
-          		<td th:text="${patient.doctor.name}">
-          		</td>
-          		<td>
-          			<a th:href="@{/study/patient/}+${patient.id}" th:text="${patient.studies.size()+'(view details)'}" >  </a>
-          		</td>
-          		<td> 
-           			<a  class="btn btn-primary  btn-block"  th:href="@{/study/add/}+${patient.id}">Add study</a>
+          		<td th:text="${study.estimatedEndTime}">
           		</td>
           		<td>
-          			<a  class="btn btn-primary  btn-block"  th:href="@{/patient/update/}+${patient.id}">Update</a>
+          			<a  class="btn btn-primary  btn-block"  th:href="@{/study/update/}+${study.id}">Update</a>
           		</td>
           		<td>
-          			<a  class="btn btn-primary  btn-block"  th:href="@{/patient/delete/}+${patient.id}">Delete</a>
+          			<a  class="btn btn-primary  btn-block"  th:href="@{/study/delete/}+${study.id}">Delete</a>
           		</td>
           	</tr>
-          </table>
-            
-           <a  class="btn btn-primary btn-lg btn-block"  href="/patient/add">Add patient</a>
-          
+          </table>  
         </div>
       </div>
 

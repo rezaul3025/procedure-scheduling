@@ -34,12 +34,27 @@ public class StudyController {
 	@Autowired
 	private StudyService studyService;
 	
+	@RequestMapping(value="", method=RequestMethod.GET)
+	public String navToStudyListPage(Model model) {
+		model.addAttribute("studies", studyService.findAll());
+		return "study/list";
+	}
+	
+	//Find all studies for patient
+	@RequestMapping(value="/patient/{id}", method=RequestMethod.GET)
+	public String navToPatientStudiesPage(Model model, @PathVariable("id") Integer id) {
+		Patient patient = patientService.findById(id);
+		model.addAttribute("patient", patient);
+		model.addAttribute("studies", studyService.findByPatient(patient));
+		return "patient/studies";
+	}
+	
 	@RequestMapping(value="/add/{patientId}")
 	public String navToAddStudyPage(Model model, @PathVariable("patientId") Integer patientId) {
 		
 		StudyForm studyForm = new StudyForm();
 		
-		model.addAttribute("study", studyForm);
+		model.addAttribute("studyForm", studyForm);
 		
 		Patient patient = patientService.findById(patientId);
 		
@@ -51,7 +66,30 @@ public class StudyController {
 		
 		model.addAttribute("studyStatus", status);
 		
+		model.addAttribute("operation", "C");
+		
 		return "/study/add";
+	}
+	
+	@RequestMapping(value="/update/{id}", method=RequestMethod.GET)
+	public String navToUpdateStudyPage(Model model, @PathVariable("id") Integer id) {
+		
+		StudyForm studyForm = utilsService.convertDomainToStudyForm(id);
+		
+		model.addAttribute("studyForm", studyForm);
+		
+		model.addAttribute("patient", studyForm.getPatient());
+		
+		List<String> status = Stream.of(StudyStatus.values())
+                .map(StudyStatus::name)
+                .collect(Collectors.toList());
+		
+		model.addAttribute("studyStatus", status);
+		
+		model.addAttribute("operation", "U");
+		
+		//Same add patient also use update
+		return "study/add";
 	}
 	
 	@RequestMapping(value="/add/action/{patientId}", method=RequestMethod.POST)
@@ -59,6 +97,21 @@ public class StudyController {
 		Study study = utilsService.convertStudyFormToDomain(studyForm, patientId);
 		studyService.createStudy(study);
 		return "redirect:/patient";
+	}
+	
+	@RequestMapping(value="/update/action/{patientId}", method=RequestMethod.POST)
+	public String updateStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute StudyForm studyForm) {
+		Study study = utilsService.convertStudyFormToDomain(studyForm, patientId);
+		studyService.updateStudy(study);
+		return "redirect:/study/patient/"+study.getPatient().getId();
+	}
+	
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	public String deletePatient(Model model, @PathVariable("id") Integer id) {
+		
+		studyService.deleteStudy(id);
+		
+		return "redirect:/study";
 	}
 
 }

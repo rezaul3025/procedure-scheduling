@@ -14,8 +14,4 @@ INSERT INTO study(id, patient_id, description, status, planned_start_time, estim
 INSERT INTO study(id, patient_id, description, status, planned_start_time, estimated_end_time) VALUES(3, 2, 'Example desc2',1,'2018-04-26 13:30:00', '2018-04-27 16:30:00');
 INSERT INTO study(id, patient_id, description, status, planned_start_time, estimated_end_time) VALUES(4, 2, 'Example desc3',2,'2018-04-27 09:30:00', '2018-04-27 15:30:00');
 
---INSERT INTO patient_doctor(patient_id, doctor_id) VALUES(1,1);
---INSERT INTO patient_doctor(patient_id, doctor_id) VALUES(1,3);
---INSERT INTO patient_doctor(patient_id, doctor_id) VALUES(2,2);
---INSERT INTO patient_doctor(patient_id, doctor_id) VALUES(2,4);
 

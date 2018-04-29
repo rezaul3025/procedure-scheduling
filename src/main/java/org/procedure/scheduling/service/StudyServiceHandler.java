@@ -2,7 +2,9 @@ package org.procedure.scheduling.service;
 
 import java.util.List;
 
+import org.procedure.scheduling.dao.PatientRepository;
 import org.procedure.scheduling.dao.StudyRepository;
+import org.procedure.scheduling.domain.Patient;
 import org.procedure.scheduling.domain.Study;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +14,7 @@ public class StudyServiceHandler implements StudyService{
 	
 	@Autowired
 	private StudyRepository studyRepo;
-
+	
 	@Override
 	public Study createStudy(Study study) {
 		return studyRepo.saveAndFlush(study);
@@ -37,6 +39,12 @@ public class StudyServiceHandler implements StudyService{
 	@Override
 	public List<Study> findAll() {
 		return studyRepo.findAll();
+	}
+
+	@Override
+	public List<Study> findByPatient(Patient patient) {
+		
+		return studyRepo.findByPatient(patient);
 	}
 
 }

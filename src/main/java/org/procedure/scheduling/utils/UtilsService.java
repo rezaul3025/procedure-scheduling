@@ -15,6 +15,8 @@ public interface UtilsService {
 	
 	Study convertStudyFormToDomain(StudyForm studyform, Integer patientId);
 	
+	StudyForm convertDomainToStudyForm(Integer id);
+	
 	LocalDate stringToLocalDateFormat(String localDateStr);
 	
 	LocalDateTime stringToLocalDateTimeFormat(String localDateTimeStr);

@@ -73,5 +73,16 @@ public class StudyServiceTest {
 		assertEquals(Integer.valueOf(3), Integer.valueOf(studies.size()));
 		
 	}
+	
+	@Test
+	public void findStudyByPatientTest() {
+		
+		Patient patient = patientService.findById(1);
+
+		List<Study> studies = studytService.findByPatient(patient);
+		
+		assertEquals(Integer.valueOf(2), Integer.valueOf(studies.size()));
+		
+	}
 
 }

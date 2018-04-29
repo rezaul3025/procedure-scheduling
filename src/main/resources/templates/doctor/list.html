@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorate="~{/layout}">
+<head>
+	<title>Doctor</title>
+</head>
+
+<body>
+	<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
+	<div class="sidebar-sticky" layout:fragment="sidebar">
+		<ul class="nav flex-column">
+			<li class="nav-item"><a class="nav-link active" href="/patient"> <span
+					data-feather="home"></span> Patient <span class="sr-only">(current)</span>
+			</a></li>
+			
+			<li class="nav-item"><a class="nav-link active" href="/study"> Study
+			</a></li>
+			
+			<li class="nav-item"><a class="nav-link active" href="/doctor"> Doctor
+			</a></li>
+			
+			<li class="nav-item"><a class="nav-link active" href="/room"> Room
+			</a></li>
+			
+		</ul>
+	</div>
+	<div layout:fragment="content">
+		<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+            <h1 class="h2">Doctor(s)</h1>
+        </div>
+		<div class="row">
+        <div class="col-md-12 order-md-1">
+          <table class="table">
+          	<tr>
+          		<th>ID</th>
+          		<th>Name</th>
+          		<th>Number of patient(s)</th>
+          	</tr>
+          	<tr th:each="doctor : ${doctors}">
+          		<td th:text="${doctor.id}">
+          		</td>
+          		<td th:text="${doctor.name}">
+          		</td>
+          		<td th:text="${doctor.patients.size()}">
+          		</td>
+          	</tr>
+          </table>
+         
+        </div>
+      </div>
+
+	</div>
+</body>
+</html>

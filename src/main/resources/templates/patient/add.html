@@ -9,11 +9,17 @@
 	<!-- /* Content of this page will be decorated by the elements of layout.html (task/layout) */ -->
 	<div class="sidebar-sticky" layout:fragment="sidebar">
 		<ul class="nav flex-column">
-			<li class="nav-item"><a class="nav-link active" href="#"> <span
-					data-feather="home"></span> Add article <span class="sr-only">(current)</span>
+			<li class="nav-item"><a class="nav-link active" href="/patient"> <span
+					data-feather="home"></span> Patient <span class="sr-only">(current)</span>
 			</a></li>
 			
-			<li class="nav-item"><a class="nav-link active" href="/article_list"> Show article list
+			<li class="nav-item"><a class="nav-link active" href="/study"> Study
+			</a></li>
+			
+			<li class="nav-item"><a class="nav-link active" href="/doctor"> Doctor
+			</a></li>
+			
+			<li class="nav-item"><a class="nav-link active" href="/room"> Room
 			</a></li>
 			
 		</ul>
@@ -75,7 +81,7 @@
                 		Please enter article text.
             		</div>
   			</div> 
-           	<button  class="btn btn-primary btn-lg btn-block" type="submit" th:text="${operation}">Add patient</button>
+           	<button  class="btn btn-primary btn-lg btn-block" type="submit" th:text="${operation=='C'?'Add patient':'Update patient'}">Add patient</button>
           </form>
         </div>
       </div>

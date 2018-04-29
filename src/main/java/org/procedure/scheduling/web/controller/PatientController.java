@@ -104,5 +104,13 @@ public class PatientController {
 		
 		return "redirect:/patient";
 	}
+	
+	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
+	public String deletePatient(Model model, @PathVariable("id") Integer id) {
+		
+		patientService.deletePatient(id);
+		
+		return "redirect:/patient";
+	}
 
 }
