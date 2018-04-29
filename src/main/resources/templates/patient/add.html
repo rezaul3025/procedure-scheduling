@@ -24,7 +24,8 @@
         </div>
 		<div class="row">
         <div class="col-md-8 order-md-1">
-          <form action="#" th:action="@{/patient/add/action}" th:object="${patient}" method="post">
+          <form action="#" th:action="@{operation=='A'?'/patient/add/action':'/patient/update/action'}" th:object="${patientForm}" method="post">
+            <input type="hidden" th:field="*{id}" />
             <div class="mb-3">
               <label for="name">Name <span class="text-muted"></span></label>
               <input th:field="*{name}"  type="text" class="form-control" id="name" placeholder="Name" required>
@@ -74,7 +75,7 @@
                 		Please enter article text.
             		</div>
   			</div> 
-           	<button  class="btn btn-primary btn-lg btn-block" type="submit">Add patient</button>
+           	<button  class="btn btn-primary btn-lg btn-block" type="submit" th:text="${operation}">Add patient</button>
           </form>
         </div>
       </div>

@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,7 +48,7 @@ public class PatientController {
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public String navToAddPatientPage(Model model) {
 		
-		model.addAttribute("patient", new PatientForm());
+		model.addAttribute("patientForm", new PatientForm());
 		
 		model.addAttribute("doctors", doctorService.findAll());
 		
@@ -59,6 +60,7 @@ public class PatientController {
 		
 		model.addAttribute("patientSex", patientSex);
 		
+		model.addAttribute("operation", "A");
 		
 		return "patient/add";
 	}
@@ -67,6 +69,39 @@ public class PatientController {
 	public String addPatientAction(Model model, @ModelAttribute PatientForm patientForm) {
 		Patient patient = utilsService.convertPatientFormToDomain(patientForm);
 		patientService.addPatient(patient);
+		return "redirect:/patient";
+	}
+	
+	@RequestMapping(value="/update/{patientId}", method=RequestMethod.GET)
+	public String navToUpdatePatientPage(Model model, @PathVariable("patientId") Integer patientId) {
+		
+		PatientForm patientForm = utilsService.convertPatientDomainToForm(patientId);
+		
+		model.addAttribute("patientForm", patientForm);
+		
+		model.addAttribute("doctors", doctorService.findAll());
+		
+		model.addAttribute("rooms", roomService.findAll());
+		
+		List<String> patientSex = Stream.of(Sex.values())
+                .map(Sex::name)
+                .collect(Collectors.toList());
+		
+		model.addAttribute("patientSex", patientSex);
+		
+		model.addAttribute("operation", "U");
+	
+		//Same add patient also use update
+		return "patient/add";
+	}
+	
+	@RequestMapping(value="/update/action", method=RequestMethod.POST)
+	public String updatePatientAction(Model model, @ModelAttribute PatientForm patientForm) {
+		
+		Patient patient = utilsService.convertPatientFormToDomain(patientForm);
+
+		patientService.updatePatient(patient);
+		
 		return "redirect:/patient";
 	}
 

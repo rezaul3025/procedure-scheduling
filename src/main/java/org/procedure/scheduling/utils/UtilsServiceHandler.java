@@ -1,5 +1,6 @@
 package org.procedure.scheduling.utils;
 
+import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -40,6 +41,8 @@ public class UtilsServiceHandler implements UtilsService {
 		Doctor doctor = dcotorService.findById(patientform.getDoctorId());
 		
 		Room room = roomService.findRoomById(patientform.getRoomId());
+		
+		patient.setId(patientform.getId());
 		patient.setDoctor(doctor);
 		patient.setRoom(room);
 		return patient;
@@ -47,7 +50,7 @@ public class UtilsServiceHandler implements UtilsService {
 
 	@Override
 	public LocalDate stringToLocalDateFormat(String localDateStr) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd").ISO_DATE;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd").ISO_DATE;
 		//convert String to LocalDate
 		LocalDate localDate = LocalDate.parse(localDateStr,formatter);
 		return localDate;
@@ -55,9 +58,9 @@ public class UtilsServiceHandler implements UtilsService {
 	
 	@Override
 	public LocalDateTime stringToLocalDateTimeFormat(String localDateTimeStr) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-mm-dd HH:mm").ISO_DATE;
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 		//convert String to LocalDate
-		LocalDateTime localDateTime = LocalDateTime.parse(localDateTimeStr);
+		LocalDateTime localDateTime = LocalDateTime.parse(localDateTimeStr, formatter);
 		return localDateTime;
 	}
 
@@ -70,6 +73,16 @@ public class UtilsServiceHandler implements UtilsService {
 		
 		Study study = new Study(patient, studyform.getDescription(), StudyStatus.valueOf(studyform.getStatus()), plannedStartTime, estimatedEndTime);
 		return study;
+	}
+
+	@Override
+	public PatientForm convertPatientDomainToForm(Integer patientId) {
+		Patient patient = patientService.findById(patientId);
+		PatientForm patientForm = new PatientForm(patient.getName(), patient.getPatientSex().toString(), patient.getDob().toString());
+		patientForm.setId(patient.getId());
+		patientForm.setDoctorId(patient.getDoctor().getId());
+		patientForm.setRoomId(patient.getRoom().getId());
+		return patientForm;
 	}
 
 }

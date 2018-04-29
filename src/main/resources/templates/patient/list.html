@@ -31,7 +31,10 @@
           		<th>Date of birth</th>
           		<th>Room</th>
           		<th>Doctor in charge</th>
+          		<th>Number of Study</th>
           		<th>Study</th>
+          		<th>Update</th>
+          		<th>Delete</th>
           	</tr>
           	<tr th:each="patient : ${patients}">
           		<td th:text="${patient.id}">
@@ -46,8 +49,16 @@
           		</td>
           		<td th:text="${patient.doctor.name}">
           		</td>
+          		<td th:text="${patient.studies.size()}">
+          		</td>
           		<td> 
            			<a  class="btn btn-primary  btn-block"  th:href="@{/study/add/}+${patient.id}">Add</a>
+          		</td>
+          		<td>
+          			<a  class="btn btn-primary  btn-block"  th:href="@{/patient/update/}+${patient.id}">Update</a>
+          		</td>
+          		<td>
+          			<a  class="btn btn-primary  btn-block"  th:href="@{/study/add/}+${patient.id}">Delete</a>
           		</td>
           	</tr>
           </table>
