@@ -17,5 +17,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface DoctorRepository extends JpaRepository<Doctor, Integer> {
+	@Override
 	Optional<Doctor> findById(Integer id);
 }

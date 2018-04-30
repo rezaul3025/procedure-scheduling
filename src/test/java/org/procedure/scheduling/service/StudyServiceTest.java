@@ -64,7 +64,8 @@ public class StudyServiceTest {
 		
 		assertEquals(estimatedEndTime, study.getEstimatedEndTime());
 		
-		assertEquals(StudyStatus.InProgress, study.getStatus().InProgress);
+		study.getStatus();
+		assertEquals(StudyStatus.InProgress, StudyStatus.InProgress);
 
 	}
 	

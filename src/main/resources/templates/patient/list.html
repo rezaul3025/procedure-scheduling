@@ -13,7 +13,7 @@
 					data-feather="home"></span> Patient <span class="sr-only">(current)</span>
 			</a></li>
 			
-			<li class="nav-item"><a class="nav-link active" href="/study"> Study
+			<li class="nav-item"><a class="nav-link active" href="/study"> Procedure
 			</a></li>
 			
 			<li class="nav-item"><a class="nav-link active" href="/doctor"> Doctor
@@ -38,8 +38,8 @@
           		<th>Date of birth</th>
           		<th>Room</th>
           		<th>Doctor in charge</th>
-          		<th>Number of Study</th>
-          		<th>Study</th>
+          		<th>Procedures</th>
+          		<th>Procedure</th>
           		<th>Update</th>
           		<th>Delete</th>
           	</tr>
@@ -60,7 +60,7 @@
           			<a th:href="@{/study/patient/}+${patient.id}" th:text="${patient.studies.size()+'(view details)'}" >  </a>
           		</td>
           		<td> 
-           			<a  class="btn btn-primary  btn-block"  th:href="@{/study/add/}+${patient.id}">Add study</a>
+           			<a  class="btn btn-primary  btn-block"  th:href="@{/study/add/}+${patient.id}">Schedule </a>
           		</td>
           		<td>
           			<a  class="btn btn-primary  btn-block"  th:href="@{/patient/update/}+${patient.id}">Update</a>

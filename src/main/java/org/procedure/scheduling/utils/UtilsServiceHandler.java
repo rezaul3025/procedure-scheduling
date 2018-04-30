@@ -59,7 +59,8 @@ public class UtilsServiceHandler implements UtilsService {
 
 	@Override
 	public LocalDate stringToLocalDateFormat(String localDateStr) {
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd").ISO_DATE;
+		DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
 		// convert String to LocalDate
 		LocalDate localDate = LocalDate.parse(localDateStr, formatter);
 		return localDate;

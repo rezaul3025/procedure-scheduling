@@ -20,6 +20,7 @@ public class RoomServiceHandler implements RoomService{
 	@Autowired
 	private RoomRepository roomRepo;
 	
+	@Override
 	public Room findRoomById(Integer id) {
 		return roomRepo.findById(id).get();
 	}
