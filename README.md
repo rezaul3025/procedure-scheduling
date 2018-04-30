@@ -12,7 +12,7 @@ Web - contain MVC function \
 Thymeleaf - templating
 
 Hibernate: \
-Data use the hibernate out of box  
+Spring Data use the hibernate out of box  
 
 UI: \
 Html5, Bootstrap 4
