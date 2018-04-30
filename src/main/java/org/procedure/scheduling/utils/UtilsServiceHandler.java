@@ -1,6 +1,5 @@
 package org.procedure.scheduling.utils;
 
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -20,6 +19,12 @@ import org.procedure.scheduling.web.form.StudyForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/** 
+ * Utils service class to do some extra calculation like conversion , formatting etc
+ * 
+ * @author rkarim
+ *
+ */
 @Service
 public class UtilsServiceHandler implements UtilsService {
 

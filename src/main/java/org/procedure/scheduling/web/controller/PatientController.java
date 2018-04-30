@@ -19,6 +19,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+
+/**
+ * Patient controller class to provide the patient related interaction between 
+ * the patient data interface and  data service layer
+ * 
+ * @author rkarim
+ *
+ */
 @Controller
 @RequestMapping(value="/patient")
 public class PatientController {
@@ -39,12 +47,14 @@ public class PatientController {
 		
 	}
 
+	//Get all patient and navigate to patient list page 
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String navToPatientListPage(Model model) {
 		model.addAttribute("patients", patientService.findAll());
 		return "patient/list";
 	}
 	
+	//Navigate to add patient page, get and initialize necessary information 
 	@RequestMapping(value="/add", method=RequestMethod.GET)
 	public String navToAddPatientPage(Model model) {
 		
@@ -65,6 +75,7 @@ public class PatientController {
 		return "patient/add";
 	}
 	
+	//Add patient information
 	@RequestMapping(value="/add/action", method=RequestMethod.POST)
 	public String addPatientAction(Model model, @ModelAttribute PatientForm patientForm) {
 		Patient patient = utilsService.convertPatientFormToDomain(patientForm);
@@ -72,6 +83,7 @@ public class PatientController {
 		return "redirect:/patient";
 	}
 	
+    //Navigate to update patient page, get and initialize necessary information 
 	@RequestMapping(value="/update/{patientId}", method=RequestMethod.GET)
 	public String navToUpdatePatientPage(Model model, @PathVariable("patientId") Integer patientId) {
 		
@@ -95,6 +107,7 @@ public class PatientController {
 		return "patient/add";
 	}
 	
+	//Update patient information
 	@RequestMapping(value="/update/action", method=RequestMethod.POST)
 	public String updatePatientAction(Model model, @ModelAttribute PatientForm patientForm) {
 		
@@ -105,6 +118,7 @@ public class PatientController {
 		return "redirect:/patient";
 	}
 	
+	//Delete patient information
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
 	public String deletePatient(Model model, @PathVariable("id") Integer id) {
 		

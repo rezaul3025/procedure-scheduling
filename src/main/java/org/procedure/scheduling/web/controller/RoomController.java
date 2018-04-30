@@ -7,6 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * Room controller class to provide the Room related interaction between 
+ * the Room data interface and  data service layer
+ * 
+ * @author rkarim
+ *
+ */
 @Controller
 @RequestMapping(value="/room")
 public class RoomController {

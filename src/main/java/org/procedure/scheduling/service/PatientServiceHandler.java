@@ -2,12 +2,17 @@ package org.procedure.scheduling.service;
 
 import java.util.List;
 
-import org.procedure.scheduling.dao.PatientDao;
 import org.procedure.scheduling.dao.PatientRepository;
 import org.procedure.scheduling.domain.Patient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Patient service class
+ * 
+ * @author rkarim
+ *
+ */
 @Service
 public class PatientServiceHandler implements PatientService {
 

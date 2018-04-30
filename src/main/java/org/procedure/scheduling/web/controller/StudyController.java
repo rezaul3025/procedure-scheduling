@@ -5,13 +5,11 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import org.procedure.scheduling.domain.Patient;
-import org.procedure.scheduling.domain.Sex;
 import org.procedure.scheduling.domain.Study;
 import org.procedure.scheduling.domain.StudyStatus;
 import org.procedure.scheduling.service.PatientService;
 import org.procedure.scheduling.service.StudyService;
 import org.procedure.scheduling.utils.UtilsService;
-import org.procedure.scheduling.web.form.PatientForm;
 import org.procedure.scheduling.web.form.StudyForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +18,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+/**
+ * Study controller class to provide the Study related interaction between 
+ * the Study data interface and  data service layer
+ * 
+ * @author rkarim
+ *
+ */
 
 @Controller
 @RequestMapping(value="/study")
@@ -34,6 +39,7 @@ public class StudyController {
 	@Autowired
 	private StudyService studyService;
 	
+	//Get all studies and navigate to study list page
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String navToStudyListPage(Model model) {
 		model.addAttribute("studies", studyService.findAll());
@@ -49,6 +55,7 @@ public class StudyController {
 		return "patient/studies";
 	}
 	
+	//Navigate to add study for patient page, get and initialize necessary information 
 	@RequestMapping(value="/add/{patientId}")
 	public String navToAddStudyPage(Model model, @PathVariable("patientId") Integer patientId) {
 		
@@ -71,6 +78,7 @@ public class StudyController {
 		return "/study/add";
 	}
 	
+	//Navigate to update study page for patient, get and initialize necessary information 
 	@RequestMapping(value="/update/{id}", method=RequestMethod.GET)
 	public String navToUpdateStudyPage(Model model, @PathVariable("id") Integer id) {
 		
@@ -92,6 +100,7 @@ public class StudyController {
 		return "study/add";
 	}
 	
+	//Add study information for patient
 	@RequestMapping(value="/add/action/{patientId}", method=RequestMethod.POST)
 	public String addStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute StudyForm studyForm) {
 		Study study = utilsService.convertStudyFormToDomain(studyForm, patientId);
@@ -99,6 +108,7 @@ public class StudyController {
 		return "redirect:/patient";
 	}
 	
+	//Update study information for patient
 	@RequestMapping(value="/update/action/{patientId}", method=RequestMethod.POST)
 	public String updateStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute StudyForm studyForm) {
 		Study study = utilsService.convertStudyFormToDomain(studyForm, patientId);
@@ -106,6 +116,7 @@ public class StudyController {
 		return "redirect:/study/patient/"+study.getPatient().getId();
 	}
 	
+	//Delete study information
 	@RequestMapping(value="/delete/{id}", method=RequestMethod.GET)
 	public String deletePatient(Model model, @PathVariable("id") Integer id) {
 		

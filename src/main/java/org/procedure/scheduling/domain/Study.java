@@ -13,6 +13,12 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Study domain class which is map to study table
+ * 
+ * @author rkarim
+ *
+ */
 @Entity
 @Table(name = "study")
 public class Study {

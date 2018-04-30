@@ -21,6 +21,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
 /**
+ * Patient domain class which is map to patient table
  * @author rkarim
  *
  */

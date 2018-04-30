@@ -1,8 +1,11 @@
 package org.procedure.scheduling.web.form;
 
-import org.procedure.scheduling.domain.Doctor;
-import org.procedure.scheduling.domain.Room;
-
+/**
+ * Patient form class to represent patient form data
+ * 
+ * @author rkarim
+ *
+ */
 public class PatientForm {
 
 	public PatientForm() {

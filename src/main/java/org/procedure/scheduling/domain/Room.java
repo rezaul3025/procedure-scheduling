@@ -13,6 +13,12 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Room domain class which is map to room table
+ * 
+ * @author rkarim
+ *
+ */
 @Entity
 @Table(name = "room")
 public class Room {

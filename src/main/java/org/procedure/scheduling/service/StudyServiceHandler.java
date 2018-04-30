@@ -2,13 +2,18 @@ package org.procedure.scheduling.service;
 
 import java.util.List;
 
-import org.procedure.scheduling.dao.PatientRepository;
 import org.procedure.scheduling.dao.StudyRepository;
 import org.procedure.scheduling.domain.Patient;
 import org.procedure.scheduling.domain.Study;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Study service class
+ * 
+ * @author rkarim
+ *
+ */
 @Service
 public class StudyServiceHandler implements StudyService{
 	

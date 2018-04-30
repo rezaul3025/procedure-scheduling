@@ -7,6 +7,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+/**
+ * Doctor controller class to provide the doctor related interaction between 
+ * the doctor data interface and  data service layer
+ * 
+ * @author rkarim
+ *
+ */
 @Controller
 @RequestMapping(value="/doctor")
 public class DoctorController {

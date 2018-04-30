@@ -4,6 +4,12 @@ import javax.validation.constraints.NotNull;
 
 import org.procedure.scheduling.domain.Patient;
 
+/**
+ * Study form class to represent the study form data
+ * 
+ * @author rkarim
+ *
+ */
 public class StudyForm {
 
 	private Integer id;

@@ -13,6 +13,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
+/**
+ * Doctor domain class which is map to doctor
+ * @author rkarim
+ *
+ */
 @Entity
 @Table(name = "doctor")
 public class Doctor {
