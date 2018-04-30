@@ -6,5 +6,6 @@ import org.procedure.scheduling.domain.Room;
 
 public interface RoomService {
 	Room findRoomById(Integer id);
+
 	List<Room> findAll();
 }

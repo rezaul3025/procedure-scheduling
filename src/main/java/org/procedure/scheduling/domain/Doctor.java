@@ -15,6 +15,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Doctor domain class which is map to doctor
+ * 
  * @author rkarim
  *
  */
@@ -26,18 +27,17 @@ public class Doctor {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@NotNull
 	private Integer id;
-	
+
 	@NotNull
 	private String name;
-	
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY, mappedBy = "doctor")
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "doctor")
 	private Set<Patient> patients = new HashSet<>();
-	
+
 	public Doctor() {
-		
+
 	}
-	
+
 	public Doctor(String name) {
 		this.name = name;
 	}

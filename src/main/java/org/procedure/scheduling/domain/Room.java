@@ -25,23 +25,20 @@ public class Room {
 
 	public Room() {
 	}
-	
+
 	public Room(String name) {
-		
+
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@NotNull
 	private String name;
-	
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "room")
-    private Set<Patient> patients = new HashSet<>();
 
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "room")
+	private Set<Patient> patients = new HashSet<>();
 
 	public Integer getId() {
 		return id;

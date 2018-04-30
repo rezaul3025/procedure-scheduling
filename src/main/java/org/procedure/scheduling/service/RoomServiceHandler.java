@@ -10,16 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Room service class
+ * 
  * @author rkarim
  *
  */
 @Service
-@Transactional(readOnly=true) //Allow only reading on master data
-public class RoomServiceHandler implements RoomService{
+@Transactional(readOnly = true) // Allow only reading on master data
+public class RoomServiceHandler implements RoomService {
 
 	@Autowired
 	private RoomRepository roomRepo;
-	
+
 	@Override
 	public Room findRoomById(Integer id) {
 		return roomRepo.findById(id).get();

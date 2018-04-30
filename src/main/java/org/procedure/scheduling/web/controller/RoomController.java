@@ -8,24 +8,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
- * Room controller class to provide the Room related interaction between 
- * the Room data interface and  data service layer
+ * Room controller class to provide the Room related interaction between the
+ * Room data interface and data service layer
  * 
  * @author rkarim
  *
  */
 @Controller
-@RequestMapping(value="/room")
+@RequestMapping(value = "/room")
 public class RoomController {
-	
+
 	@Autowired
 	private RoomService roomService;
-	
-	@RequestMapping(value="", method=RequestMethod.GET)
+
+	@RequestMapping(value = "", method = RequestMethod.GET)
 	public String navToRoomListPage(Model model) {
-		
+
 		model.addAttribute("rooms", roomService.findAll());
-		
+
 		return "room/list";
 	}
 

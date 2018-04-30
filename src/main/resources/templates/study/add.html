@@ -60,7 +60,10 @@
     					$("#estimatedEndTime").datetimepicker();
 				</script>  
   			</div>
-  			
+  			<span th:each="errMesg : ${validationMesg}">
+        	  		<span style="color:red"  th:text="${errMesg}"></span><br/>
+        	  	</span>
+        	  	<br/>
            	<button  class="btn btn-primary btn-lg btn-block" type="submit" th:text="${operation=='C'?'Create study':'Update study'}" >Create study</button>
           </form>
         </div>

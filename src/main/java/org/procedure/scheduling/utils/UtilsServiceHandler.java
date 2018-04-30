@@ -19,8 +19,9 @@ import org.procedure.scheduling.web.form.StudyForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-/** 
- * Utils service class to do some extra calculation like conversion , formatting etc
+/**
+ * Utils service class to do some extra calculation like conversion , formatting
+ * etc
  * 
  * @author rkarim
  *
@@ -59,54 +60,52 @@ public class UtilsServiceHandler implements UtilsService {
 
 	@Override
 	public LocalDate stringToLocalDateFormat(String localDateStr) {
-		
-		if(localDateStr == null) {
+
+		if (localDateStr == null) {
+			return null;
+		} else if (localDateStr.isEmpty()) {
 			return null;
 		}
-		else if(localDateStr.isEmpty()) {
-			return null;
-		}
-		
+
 		DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ISO_DATE;
-		
+
 		// convert String to LocalDate
 		LocalDate localDate = LocalDate.parse(localDateStr, formatter);
-		
+
 		return localDate;
 	}
 
 	@Override
 	public LocalDateTime stringToLocalDateTimeFormat(String localDateTimeStr) {
-		
-		if(localDateTimeStr == null ) {
+
+		if (localDateTimeStr == null) {
+			return null;
+		} else if (localDateTimeStr.isEmpty()) {
 			return null;
 		}
-		else if(localDateTimeStr.isEmpty()) {
-			return null;
-		}
-		
+
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-		
+
 		// convert String to LocalDateTime
 		LocalDateTime localDateTime = LocalDateTime.parse(localDateTimeStr, formatter);
-		
+
 		return localDateTime;
 	}
 
 	@Override
 	public Study convertStudyFormToDomain(StudyForm studyform, Integer patientId) {
-		
+
 		LocalDateTime plannedStartTime = stringToLocalDateTimeFormat(studyform.getPlannedStartTime());
-		
+
 		LocalDateTime estimatedEndTime = stringToLocalDateTimeFormat(studyform.getEstimatedEndTime());
 
 		Patient patient = patientService.findById(patientId);
 
 		Study study = new Study(patient, studyform.getDescription(), StudyStatus.valueOf(studyform.getStatus()),
 				plannedStartTime, estimatedEndTime);
-		
+
 		study.setId(studyform.getId());
 
 		return study;
@@ -114,37 +113,40 @@ public class UtilsServiceHandler implements UtilsService {
 
 	@Override
 	public PatientForm convertPatientDomainToForm(Integer patientId) {
-		
+
 		Patient patient = patientService.findById(patientId);
-		
+
 		LocalDate dob = patient.getDob();
-		
+
 		PatientForm patientForm = new PatientForm(patient.getName(), patient.getPatientSex().toString(),
-				dob==null?null:dob.toString());
-		
+				dob == null ? null : dob.toString());
+
 		patientForm.setId(patient.getId());
-		
+
 		patientForm.setDoctorId(patient.getDoctor().getId());
-		
+
 		patientForm.setRoomId(patient.getRoom().getId());
-		
+
 		return patientForm;
 	}
 
 	@Override
 	public StudyForm convertDomainToStudyForm(Integer id) {
-		
+
 		Study study = studyService.findById(id);
-		
-		String plannedStartTime = study.getPlannedStartTime()==null?null:study.getPlannedStartTime().toString().replace("T", " ");;
-		
-		String estimatedEndTime = study.getEstimatedEndTime()==null?null:study.getEstimatedEndTime().toString().replace("T", " ");
-		
+
+		String plannedStartTime = study.getPlannedStartTime() == null ? null
+				: study.getPlannedStartTime().toString().replace("T", " ");
+		;
+
+		String estimatedEndTime = study.getEstimatedEndTime() == null ? null
+				: study.getEstimatedEndTime().toString().replace("T", " ");
+
 		StudyForm studyForm = new StudyForm(study.getPatient(), study.getDescription(), study.getStatus().toString(),
 				plannedStartTime, estimatedEndTime);
-		
+
 		studyForm.setId(study.getId());
-		
+
 		return studyForm;
 	}
 

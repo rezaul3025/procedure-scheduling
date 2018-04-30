@@ -7,16 +7,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class PatientTest {
-	
-    @Before
-    public void setUp() {
-        ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
-        factory.getValidator();
-    }
+
+	@Before
+	public void setUp() {
+		ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+		factory.getValidator();
+	}
 
 	@Test
 	public void testPatientCreate() {
-		
+
 	}
 
 }

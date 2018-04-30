@@ -15,11 +15,11 @@ import org.springframework.stereotype.Service;
  *
  */
 @Service
-public class StudyServiceHandler implements StudyService{
-	
+public class StudyServiceHandler implements StudyService {
+
 	@Autowired
 	private StudyRepository studyRepo;
-	
+
 	@Override
 	public Study createStudy(Study study) {
 		return studyRepo.saveAndFlush(study);
@@ -37,7 +37,7 @@ public class StudyServiceHandler implements StudyService{
 
 	@Override
 	public Study findById(Integer id) {
-		
+
 		return studyRepo.findById(id).get();
 	}
 
@@ -48,7 +48,7 @@ public class StudyServiceHandler implements StudyService{
 
 	@Override
 	public List<Study> findByPatient(Patient patient) {
-		
+
 		return studyRepo.findByPatient(patient);
 	}
 

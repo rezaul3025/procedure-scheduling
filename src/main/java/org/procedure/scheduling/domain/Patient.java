@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Patient domain class which is map to patient table
+ * 
  * @author rkarim
  *
  */
@@ -35,40 +36,39 @@ public class Patient {
 	public Patient() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	public Patient(String name, Sex patientSex, LocalDate dob)
-	{
+
+	public Patient(String name, Sex patientSex, LocalDate dob) {
 		this.setName(name);
 		this.patientSex = patientSex;
 		this.dob = dob;
 	}
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@NotNull
 	private String name;
-	
-	@Column(name="sex")
+
+	@Column(name = "sex")
 	private Sex patientSex;
-	
+
 	private LocalDate dob;
-	
-	//Column 'room_id' in 'patient' table will be null if no room assign during creation
+
+	// Column 'room_id' in 'patient' table will be null if no room assign during
+	// creation
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "room_id")
-    private Room room;
-	
-	//Column 'doctor_id' in 'patient' table will be null if no doctor assign during creation
+	@JoinColumn(name = "room_id")
+	private Room room;
+
+	// Column 'doctor_id' in 'patient' table will be null if no doctor assign during
+	// creation
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "doctor_id")
+	@JoinColumn(name = "doctor_id")
 	private Doctor doctor;
-	
-	@OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "patient")
-    private Set<Study> studies = new HashSet<>();
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "patient")
+	private Set<Study> studies = new HashSet<>();
 
 	public Integer getId() {
 		return id;

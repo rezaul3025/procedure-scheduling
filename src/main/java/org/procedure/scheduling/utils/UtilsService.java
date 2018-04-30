@@ -10,14 +10,14 @@ import org.procedure.scheduling.web.form.StudyForm;
 
 public interface UtilsService {
 	Patient convertPatientFormToDomain(PatientForm patientform);
-	
+
 	PatientForm convertPatientDomainToForm(Integer patientId);
-	
+
 	Study convertStudyFormToDomain(StudyForm studyform, Integer patientId);
-	
+
 	StudyForm convertDomainToStudyForm(Integer id);
-	
+
 	LocalDate stringToLocalDateFormat(String localDateStr);
-	
+
 	LocalDateTime stringToLocalDateTimeFormat(String localDateTimeStr);
 }

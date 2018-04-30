@@ -1,5 +1,6 @@
 package org.procedure.scheduling.web.form;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -19,19 +20,19 @@ public class PatientForm {
 		this.patientSex = patientSex;
 		this.dob = dob;
 	}
-	
 
 	private Integer id;
-	
+
 	@NotNull
+	@NotBlank
 	private String name;
-	
+
 	private String patientSex;
-	
+
 	private String dob;
-	
+
 	private Integer doctorId;
-	
+
 	private Integer roomId;
 
 	public Integer getId() {

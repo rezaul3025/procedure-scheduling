@@ -22,9 +22,11 @@ public class StudyForm {
 	private String description;
 
 	@NotNull
+	@NotBlank
 	private String status;
 
 	@NotNull
+	@NotBlank
 	private String plannedStartTime;
 
 	private String estimatedEndTime;

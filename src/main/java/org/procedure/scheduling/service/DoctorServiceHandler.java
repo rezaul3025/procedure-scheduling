@@ -1,6 +1,5 @@
 package org.procedure.scheduling.service;
 
-
 import java.util.List;
 
 import org.procedure.scheduling.dao.DoctorRepository;
@@ -10,18 +9,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- * Doctor service class 
+ * Doctor service class
  * 
  * @author rkarim
  *
  */
 @Service
-@Transactional(readOnly=true) //Allow only reading on master data
-public class DoctorServiceHandler implements DoctorService{
+@Transactional(readOnly = true) // Allow only reading on master data
+public class DoctorServiceHandler implements DoctorService {
 
 	@Autowired
 	private DoctorRepository doctorRepo;
-	
+
 	@Override
 	public Doctor findById(Integer id) {
 		return doctorRepo.findById(id).get();

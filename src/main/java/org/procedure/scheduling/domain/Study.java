@@ -26,30 +26,31 @@ public class Study {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "patient_id", nullable = false)
+	@JoinColumn(name = "patient_id", nullable = false)
 	@NotNull
 	private Patient patient;
-	
+
 	@NotNull
 	private String description;
-	
+
 	@NotNull
 	private StudyStatus status;
-	
+
 	@NotNull
-	@Column(name="planned_start_time")
+	@Column(name = "planned_start_time")
 	private LocalDateTime plannedStartTime;
-	
-	@Column(name="estimated_end_time")
+
+	@Column(name = "estimated_end_time")
 	private LocalDateTime estimatedEndTime;
-	
+
 	public Study() {
-		
+
 	}
-	
-	public Study(Patient patient, String description, StudyStatus status, LocalDateTime plannedStartTime, LocalDateTime estimatedEndTime) {
+
+	public Study(Patient patient, String description, StudyStatus status, LocalDateTime plannedStartTime,
+			LocalDateTime estimatedEndTime) {
 		this.patient = patient;
 		this.description = description;
 		this.status = status;
@@ -104,7 +105,5 @@ public class Study {
 	public void setEstimatedEndTime(LocalDateTime estimatedEndTime) {
 		this.estimatedEndTime = estimatedEndTime;
 	}
-	
-	
 
 }

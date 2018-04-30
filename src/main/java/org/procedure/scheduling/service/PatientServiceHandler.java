@@ -18,13 +18,13 @@ public class PatientServiceHandler implements PatientService {
 
 	@Autowired
 	private PatientRepository patientRepo;
-	
+
 	@Override
 	public Patient addPatient(Patient patient) {
-		
+
 		return patientRepo.saveAndFlush(patient);
 	}
-	
+
 	@Override
 	public Patient updatePatient(Patient patient) {
 		return patientRepo.saveAndFlush(patient);

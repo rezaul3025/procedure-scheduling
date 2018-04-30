@@ -17,7 +17,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
- * Test class for patient services 
+ * Test class for patient services
+ * 
  * @author rkarim
  *
  */
@@ -27,17 +28,17 @@ public class PatientServiceTest {
 
 	@Autowired
 	private PatientService patientService;
-	
+
 	@Autowired
 	private RoomService roomService;
-	
+
 	@Autowired
 	private DoctorService doctorService;
-	
+
 	public PatientServiceTest() {
-		
+
 	}
-	
+
 	@Test
 	public void addPatientTest() {
 		Patient patient = new Patient("Test patient", Sex.MALE, LocalDate.of(1987, 6, 12));
@@ -46,29 +47,29 @@ public class PatientServiceTest {
 		patient = patientService.addPatient(patient);
 		assertEquals(Integer.valueOf(4), patient.getId());
 	}
-	
+
 	@Test
 	public void deletePatientTest() {
 		patientService.deletePatient(1);
 		List<Patient> allPatients = patientService.findAll();
 		assertEquals(Integer.valueOf(2), Integer.valueOf(allPatients.size()));
 	}
-	
+
 	@Test
 	public void updatePatientTest() {
 		Patient patient = new Patient("Test patient1", Sex.FEMALE, LocalDate.of(1983, 4, 16));
 		patient = patientService.addPatient(patient);
-		
-		//Assign room
+
+		// Assign room
 		Room room = roomService.findRoomById(1);
 		patient.setRoom(room);
-		
-		//Assign doctor
+
+		// Assign doctor
 		Doctor doctor = doctorService.findById(2);
 		patient.setDoctor(doctor);
-		
+
 		patient = patientService.updatePatient(patient);
-		
+
 		assertEquals(Integer.valueOf(1), Integer.valueOf(patient.getRoom().getId()));
 		assertEquals(Integer.valueOf(2), Integer.valueOf(patient.getDoctor().getId()));
 	}
