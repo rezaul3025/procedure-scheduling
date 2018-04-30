@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+import javax.validation.Valid;
+
 import org.procedure.scheduling.domain.Patient;
 import org.procedure.scheduling.domain.Study;
 import org.procedure.scheduling.domain.StudyStatus;
@@ -14,10 +16,12 @@ import org.procedure.scheduling.web.form.StudyForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
 /**
  * Study controller class to provide the Study related interaction between 
  * the Study data interface and  data service layer
@@ -102,17 +106,34 @@ public class StudyController {
 	
 	//Add study information for patient
 	@RequestMapping(value="/add/action/{patientId}", method=RequestMethod.POST)
-	public String addStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute StudyForm studyForm) {
+	public String addStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute @Valid StudyForm studyForm, 
+			BindingResult bindingResult) {
+		
+		if (bindingResult.hasErrors()) {
+            return "study/add";
+        }
+		
+		
 		Study study = utilsService.convertStudyFormToDomain(studyForm, patientId);
+		
 		studyService.createStudy(study);
+		
 		return "redirect:/patient";
 	}
 	
 	//Update study information for patient
 	@RequestMapping(value="/update/action/{patientId}", method=RequestMethod.POST)
-	public String updateStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute StudyForm studyForm) {
+	public String updateStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute @Valid StudyForm studyForm, 
+			BindingResult bindingResult) {
+		
+		if (bindingResult.hasErrors()) {
+            return "redirect:/study/add/"+patientId;
+        }
+		
 		Study study = utilsService.convertStudyFormToDomain(studyForm, patientId);
+		
 		studyService.updateStudy(study);
+		
 		return "redirect:/study/patient/"+study.getPatient().getId();
 	}
 	

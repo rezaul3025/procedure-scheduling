@@ -30,12 +30,13 @@
         </div>
 		<div class="row">
         <div class="col-md-8 order-md-1">
-          <form action="#" th:action="@{operation=='C'?'/study/add/action/':'/study/update/action/'}+${patient.id}" th:object="${studyForm}" method="post">
+        		<span th:text="${operation}"></span>
+          <form action="#" th:action="${operation == 'C'}?@{'/study/add/action/'}+${patient.id}:@{'/study/update/action/'}+${patient.id}" th:object="${studyForm}" method="post">
             <input type="hidden" th:field="*{id}" />
             <div class="mb-3">
               <label for="description">Description <span class="text-muted"></span></label>
-              <textarea  th:field="*{description}" class="form-control" id="description" rows="3" required></textarea>
-              <div class="invalid-feedback">
+              <textarea  th:field="*{description}" class="form-control" id="description" rows="3" ></textarea>
+              <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="invalid-feedback">
                 Please enter study description.
               </div>
             </div>

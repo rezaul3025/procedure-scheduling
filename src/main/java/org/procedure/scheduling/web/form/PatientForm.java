@@ -1,5 +1,7 @@
 package org.procedure.scheduling.web.form;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Patient form class to represent patient form data
  * 
@@ -21,6 +23,7 @@ public class PatientForm {
 
 	private Integer id;
 	
+	@NotNull
 	private String name;
 	
 	private String patientSex;

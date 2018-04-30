@@ -117,8 +117,10 @@ public class UtilsServiceHandler implements UtilsService {
 		
 		Patient patient = patientService.findById(patientId);
 		
+		LocalDate dob = patient.getDob();
+		
 		PatientForm patientForm = new PatientForm(patient.getName(), patient.getPatientSex().toString(),
-				patient.getDob().toString());
+				dob==null?null:dob.toString());
 		
 		patientForm.setId(patient.getId());
 		

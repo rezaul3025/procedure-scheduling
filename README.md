@@ -7,8 +7,8 @@ Packaging : WAR
 
 Spring components:
 Boot \
-Data - contain JPA, Hibernate function\
-Web - contain MVC function
+Data - contain JPA, Hibernate function \
+Web - contain MVC function \
 Thymeleaf - templating
 
 Hibernate:

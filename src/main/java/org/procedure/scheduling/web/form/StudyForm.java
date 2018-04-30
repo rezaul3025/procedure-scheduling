@@ -1,5 +1,6 @@
 package org.procedure.scheduling.web.form;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.procedure.scheduling.domain.Patient;
@@ -14,15 +15,16 @@ public class StudyForm {
 
 	private Integer id;
 
-	@NotNull
 	private Patient patient;
 
 	@NotNull
+	@NotBlank
 	private String description;
 
 	@NotNull
 	private String status;
 
+	@NotNull
 	private String plannedStartTime;
 
 	private String estimatedEndTime;
