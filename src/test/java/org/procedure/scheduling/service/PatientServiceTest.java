@@ -40,7 +40,7 @@ public class PatientServiceTest {
 	}
 
 	@Test
-	public void addPatientTest() {
+	public void testAddPatient() {
 		Patient patient = new Patient("Test patient", Sex.MALE, LocalDate.of(1987, 6, 12));
 		Room room = roomService.findRoomById(1);
 		patient.setRoom(room);
@@ -49,14 +49,14 @@ public class PatientServiceTest {
 	}
 
 	@Test
-	public void deletePatientTest() {
+	public void testDeletePatient() {
 		patientService.deletePatient(1);
 		List<Patient> allPatients = patientService.findAll();
-		assertEquals(Integer.valueOf(2), Integer.valueOf(allPatients.size()));
+		assertEquals(Integer.valueOf(3), Integer.valueOf(allPatients.size()));
 	}
 
 	@Test
-	public void updatePatientTest() {
+	public void testUpdatePatient() {
 		Patient patient = new Patient("Test patient1", Sex.FEMALE, LocalDate.of(1983, 4, 16));
 		patient = patientService.addPatient(patient);
 

@@ -34,9 +34,9 @@ public class StudyServiceTest {
 	private StudyService studytService;
 
 	@Test
-	public void createStudyTest() {
+	public void testCreateStudy() {
 
-		Patient patient = patientService.findById(1);
+		Patient patient = patientService.findById(2);
 		LocalDateTime plannedStartTime = LocalDateTime.of(LocalDate.of(2018, 04, 28), LocalTime.of(9, 30));
 		LocalDateTime estimatedEndTime = LocalDateTime.of(LocalDate.of(2018, 04, 28), LocalTime.of(13, 30));
 
@@ -47,7 +47,7 @@ public class StudyServiceTest {
 	}
 
 	@Test
-	public void updateStudyTest() {
+	public void testUpdateStudyTest() {
 
 		LocalDateTime estimatedEndTime = LocalDateTime.of(LocalDate.of(2018, 04, 28), LocalTime.of(14, 30));
 
@@ -71,20 +71,20 @@ public class StudyServiceTest {
 	}
 
 	@Test
-	public void deleteStudyTest() {
+	public void testdeleteStudy() {
 
-		studytService.deleteStudy(1);
+		studytService.deleteStudy(4);
 
 		List<Study> studies = studytService.findAll();
 
-		assertEquals(Integer.valueOf(3), Integer.valueOf(studies.size()));
+		assertEquals(Integer.valueOf(2), Integer.valueOf(studies.size()));
 
 	}
 
 	@Test
-	public void findStudyByPatientTest() {
+	public void testfindStudyByPatient() {
 
-		Patient patient = patientService.findById(1);
+		Patient patient = patientService.findById(2);
 
 		List<Study> studies = studytService.findByPatient(patient);
 
