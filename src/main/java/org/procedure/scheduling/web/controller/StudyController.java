@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
  * Study controller class to provide the Study related interaction between 
@@ -106,13 +107,7 @@ public class StudyController {
 	
 	//Add study information for patient
 	@RequestMapping(value="/add/action/{patientId}", method=RequestMethod.POST)
-	public String addStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute @Valid StudyForm studyForm, 
-			BindingResult bindingResult) {
-		
-		if (bindingResult.hasErrors()) {
-            return "study/add";
-        }
-		
+	public String addStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute("studyForm") @Valid StudyForm studyForm) {
 		
 		Study study = utilsService.convertStudyFormToDomain(studyForm, patientId);
 		
@@ -123,12 +118,7 @@ public class StudyController {
 	
 	//Update study information for patient
 	@RequestMapping(value="/update/action/{patientId}", method=RequestMethod.POST)
-	public String updateStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute @Valid StudyForm studyForm, 
-			BindingResult bindingResult) {
-		
-		if (bindingResult.hasErrors()) {
-            return "redirect:/study/add/"+patientId;
-        }
+	public String updateStudyAction(Model model, @PathVariable("patientId") Integer patientId, @ModelAttribute("studyForm") @Valid StudyForm studyForm) {
 		
 		Study study = utilsService.convertStudyFormToDomain(studyForm, patientId);
 		

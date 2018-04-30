@@ -35,9 +35,6 @@
             <div class="mb-3">
               <label for="name">Name <span class="text-muted"></span></label>
               <input th:field="*{name}"  type="text" class="form-control" id="name" placeholder="Name" required>
-              <div class="invalid-feedback">
-                Please enter patient name.
-              </div>
             </div>
             <div class="mb-3">
               <label for="address">Sex</label>
@@ -46,17 +43,11 @@
           				th:value="${sex}" 
           				th:text="${sex}"></option>
 				</select>
-              <div class="invalid-feedback">
-                Please select patient sex.
-              </div>
             </div>
             
             <div class="mb-3">
     				<label for="dob">Date of birth <span class="text-muted"></span></label>
               	<input th:field="*{dob}"  type="text" class="form-control" id="dob" placeholder="YYYY-MM-DD" >
-              	<div class="invalid-feedback">
-                		Please enter patient date of brith.
-              	</div>
   			</div>
   			
   			<div class="mb-3">
@@ -66,9 +57,6 @@
           				th:value="${doctor.id}" 
           				th:text="${doctor.name}"></option>
 				</select>
-    				<div class="invalid-feedback">
-                		Please enter article text.
-            		</div>
   			</div>
   			<div class="mb-3">
     				<label for="doctor">Assign room</label>
@@ -77,9 +65,6 @@
           				th:value="${room.id}" 
           				th:text="${'No.'+room.id+'('+room.name+')'}"></option>
 				</select>
-    				<div class="invalid-feedback">
-                		Please enter article text.
-            		</div>
   			</div> 
            	<button  class="btn btn-primary btn-lg btn-block" type="submit" th:text="${operation=='C'?'Add patient':'Update patient'}">Add patient</button>
           </form>

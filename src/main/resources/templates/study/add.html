@@ -30,15 +30,11 @@
         </div>
 		<div class="row">
         <div class="col-md-8 order-md-1">
-        		<span th:text="${operation}"></span>
           <form action="#" th:action="${operation == 'C'}?@{'/study/add/action/'}+${patient.id}:@{'/study/update/action/'}+${patient.id}" th:object="${studyForm}" method="post">
             <input type="hidden" th:field="*{id}" />
             <div class="mb-3">
               <label for="description">Description <span class="text-muted"></span></label>
-              <textarea  th:field="*{description}" class="form-control" id="description" rows="3" ></textarea>
-              <div th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="invalid-feedback">
-                Please enter study description.
-              </div>
+              <textarea  th:field="*{description}" class="form-control" id="description" rows="3" required="required"></textarea>
             </div>
             <div class="mb-3">
               <label for="address">Status</label>
@@ -47,17 +43,11 @@
           				th:value="${status}" 
           				th:text="${status}"></option>
 				</select>
-              <div class="invalid-feedback">
-                Please select study status.
-              </div>
             </div>
             
             <div class="mb-3">
     				<label for="plannedStartTime">Planned start time <span class="text-muted"></span></label>
               	<input th:field="*{plannedStartTime}"  type="text" class="form-control form_datetime" id="plannedStartTime" data-date-format="yyyy-mm-dd hh:ii" placeholder="YYYY-MM-DD HH:mm" required> 
-              	<div class="invalid-feedback">
-                		Please enter planned start time.
-              	</div>
               	<script type="text/javascript">
     					$("#plannedStartTime").datetimepicker();
 				</script>  
@@ -66,9 +56,6 @@
   			<div class="mb-3">
     				<label for="estimatedEndTime">Estimated end time <span class="text-muted"></span></label>
               	<input th:field="*{estimatedEndTime}"  type="text" class="form-control form_datetime" id="estimatedEndTime" data-date-format="yyyy-mm-dd hh:ii"  placeholder="YYYY-MM-DD HH:mm">
-              	<div class="invalid-feedback">
-                		Please enter estimated end time.
-              	</div>
               	<script type="text/javascript">
     					$("#estimatedEndTime").datetimepicker();
 				</script>  
