@@ -103,7 +103,7 @@ public class PatientController {
 		
 		model.addAttribute("operation", "U");
 	
-		//Same add patient also use update
+		//Same add patient view also use for update
 		return "patient/add";
 	}
 	

@@ -1,15 +1,21 @@
 # procedure-scheduling
 
-Java version: 1.8
-Memory database: H2
-Build tool : Maven
-Packaging : WAR
+Java version: 1.8 \
+Memory database: H2 \
+Build tool : Maven \
+Packaging : WAR 
 
 Spring components:
-Boot, Data, Rest, Thymeleaf
+Boot \
+Data - contain JPA, Hibernate function\
+Web - contain MVC function
+Thymeleaf - templating
 
-UI
-Html5, Bootstrap 4, AngularJs
+Hibernate:
+Data use the hibernate out of box  
+
+UI:
+Html5, Bootstrap 4
 
 Please, follow the following instructions to build, test & run the application 
 

@@ -96,7 +96,7 @@ public class StudyController {
 		
 		model.addAttribute("operation", "U");
 		
-		//Same add patient also use update
+		//Same add study view also use for update
 		return "study/add";
 	}
 	
