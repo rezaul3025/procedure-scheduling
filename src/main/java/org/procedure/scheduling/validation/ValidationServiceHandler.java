@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.procedure.scheduling.dao.StudyRepository;
-import org.procedure.scheduling.domain.Study;
 import org.procedure.scheduling.utils.UtilsService;
 import org.procedure.scheduling.web.form.StudyForm;
 import org.springframework.beans.factory.annotation.Autowired;
