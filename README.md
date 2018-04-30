@@ -30,6 +30,6 @@ $ mvn clean test
 Run: \
 $ mvn spring-boot:run
 
-Access App : http://localhost:8080/
+Access App : http://localhost:8080
 
 
